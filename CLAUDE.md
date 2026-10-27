@@ -2,11 +2,46 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project status
+## Project
 
-This repository is a fresh scaffold: it currently contains only `README.md`, `.gitignore` (the standard GitHub Python template), and `.env.example`. There is no source code, build system, dependency manifest, or test suite yet, so there are no build/lint/test commands to document. Update this file once those exist.
+DoxBox (doxbox.com) is an AI assistant for business meetings and interviews. The pipeline has two stages:
 
-## Known conventions
+1. **Recording → transcript**: a transcriber turns the meeting recording into a text transcript.
+2. **Transcript → document**: Claude (via the Anthropic API) turns the transcript into a structured document based on a template.
 
-- Intended language is Python (inferred from the `.gitignore` template).
-- The project will call the Anthropic API: configuration is read from a `.env` file with `ANTHROPIC_API_KEY` (see `.env.example`). `.env` is gitignored; keep `.env.example` in sync when adding new variables.
+The repository is still an early scaffold: no source code, dependency manifest, or tests exist yet. Update this file (architecture, entry point, commands) as they appear.
+
+## Stack
+
+- Python
+- `anthropic` SDK for the Claude API
+- `pytest` for tests
+
+## Commands
+
+Setup (Windows, Git Bash):
+
+```bash
+python -m venv .venv
+source .venv/Scripts/activate
+pip install anthropic pytest
+cp .env.example .env   # then set ANTHROPIC_API_KEY
+```
+
+Tests:
+
+```bash
+pytest                                      # all tests
+pytest tests/test_module.py                 # one file
+pytest tests/test_module.py::test_name      # one test
+```
+
+Run: no entry point exists yet — add the run command here when it is created.
+
+## Rules
+
+- **English only**: code, identifiers, comments, docstrings, commit messages, PR descriptions, and docs.
+- **Branches and PRs only**: never commit directly to `main`. Create a branch for every change and merge it through a pull request.
+- **A test for every function**: each new or changed function gets pytest coverage in the same PR.
+- **No secrets in code**: configuration such as `ANTHROPIC_API_KEY` is read from `.env` (gitignored). Keep `.env.example` in sync when adding variables.
+- **Ask before adding dependencies**: get the user's approval before adding any new package.
