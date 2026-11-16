@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-DoxBox (doxbox.com) is an AI assistant for business meetings and interviews. The pipeline has two stages:
+BoxDox (BoxDox.com) is an AI assistant for business meetings and interviews. The pipeline has two stages:
 
 1. **Recording → transcript**: a transcriber turns the meeting recording into a text transcript.
 2. **Transcript → document**: Claude (via the Anthropic API) turns the transcript into a structured document based on a template.
